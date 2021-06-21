@@ -234,7 +234,7 @@ def Manager_Exit(self):
     Start.__init__()
     login(input("User_Name : ") , input("Password : ") , " ")
 #----------------------------------------------------------------------------
-# On Start , Exit Methods
+# On Start , Exit Function
 def Print_EmployeeS_By_level(level):
     curs.execute(f"SELECT Name,Age,Pay FROM Boss WHERE Level = :level ",{"level":level})
     boss = tabulate(curs.fetchall())
