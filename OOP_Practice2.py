@@ -254,7 +254,8 @@ def Print_EmployeeS_Join_Date(joinDate):
     curs.execute(f"SELECT Name,Lastname,Age,Pay,Join_Date FROM Employee WHERE Join_Date = :jd ",{"jd":joinDate})
     employee = tabulate(curs.fetchall())
     print(f"\nUsers Added In {joinDate}:\n{boss}\n{assistant}\n{employee}")
-#-----------
+#-----------------------------------------------------------------
+# This Is A Function For Test The Program Wthiout Open The Database File
 def Show_All_Employees():
     curs.execute(f"SELECT Name,Lastname,User_Name,Password,Age,Level,Pay,Phone_number,Email,Join_Date FROM Boss ")
     boss = tabulate(curs.fetchall())
