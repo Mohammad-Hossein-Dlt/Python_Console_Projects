@@ -1,9 +1,7 @@
-import os , datetime
-os.system("cls")
-import sqlite3
-import string
+import os , datetime , sqlite3 , string
 from random import *
 from tabulate import tabulate
+os.system("cls")
 connect = sqlite3.Connection("User.db")
 curs = connect.cursor()
 curs.execute(''' CREATE TABLE IF NOT EXISTS Boss(
@@ -128,7 +126,7 @@ class Employee__(Manager):
         if self.select == 2: Manager.exit()
         self.resume()
 #----------------------------------------------------------------------------
-# The Following Function Is Used In Some Parts Of The Program
+# The Following Function Is Used In Some Parts Of The Program , Get Values Of A Specified Column From Tables Or Table
 def Item_Getter(table , column):
     getx = list()
     for item in table :
@@ -255,7 +253,7 @@ def Print_EmployeeS_Join_Date(joinDate):
     employee = tabulate(curs.fetchall())
     print(f"\nUsers Added In {joinDate}:\n{boss}\n{assistant}\n{employee}")
 #-----------------------------------------------------------------
-# This Is A Function For Test The Program Wthiout Open The Database File
+# This Is A Function For Show Database To Test The Program Wthiout Open The Database File
 def Show_All_Employees():
     curs.execute(f"SELECT Name,Lastname,User_Name,Password,Age,Level,Pay,Phone_number,Email,Join_Date FROM Boss ")
     boss = tabulate(curs.fetchall())
@@ -267,7 +265,7 @@ def Show_All_Employees():
     print(f"Users in Assistant:\n{assistant}\n")
     print(f"Users People in Employee:\n{employee}\n")
 #-----------------------------------------------------------------
-# Login Function To Check The User_Name And Password
+# Login Function To Checke The User_Name And Password
 def Login_Check(login__):
     def wrapper(usn,psw,p):
         pswlist2 = list()
@@ -292,10 +290,10 @@ def login(usn,psw,p):
     if p == "Assistant" : user =  Assistant(usn,psw,p)
     if p == "Employee": user =  Employee__(usn,psw,p)
 #----------------------------------------------------------------------------
-curs.execute("SELECT * FROM Boss")
-checknew =  curs.fetchall()
 # Check Database When Project Start
 # Add User If Database Was Empty
+curs.execute("SELECT * FROM Boss")
+checknew =  curs.fetchall()
 if len(checknew) == 0:
     print("Your Database Is Empty ,New One Was Created!!!\n You Must Import Boss First.\n")
     def firststart() :
