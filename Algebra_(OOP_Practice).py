@@ -1,6 +1,6 @@
 import os , math
 os.system("cls")
-# لطفا معادله ها را با فرمت زیر وارد کنید و دقت کنید که بین جمله های معادله فاصله نباشد
+# Please enter the equations in the following format and make sure that there is no space between the equation sentences
 # x**3-4x**2+5x-2
 # 6x**3-4x**2-4x+2
 # -6x**3+8x**2-4x+3
@@ -69,9 +69,9 @@ class equation_degrees3:
 		self.p = self.cx - ((self.bx2**2)/3)
 		self.q = (( 2 * ( self.bx2 ** 3 ) / 27 ) - (( self.bx2 * self.cx ) / 3)) + self.d
 		self.delta = (( self.q**2 ) / 4 ) + (( self.p**3 ) / 27)
-		# "اگر  0 > دلتا معادله 3 ریشه دارد "
-		# "اگر 0 = دلتا معادله 2 ریشه دارد "
-		# "اگر 0 < دلتا معادله 1 ریشه دارد "
+		# "If 0> Delta has 3 roots equation"
+                # "If 0 = Delta has 2 roots in the equation"
+                # "If 0 <delta has the root equation 1
 		if len(ex) != 0:
 			self.ex1 = ax3 * ( ex[0] ** 3 ) + bx2*( ex[0] ** 2 ) + cx * ex[0] + d
 			self.ex2 = ax3 * ( ex[1] ** 3 ) + bx2*( ex[1] ** 2 ) + cx * ex[1] + d
@@ -80,19 +80,19 @@ class equation_degrees3:
 			self.ex1 = self.ex2 = 0
 			self.extermom = "Extermom Does Not Exist !!!!"
 	def roots(self):
-		# "برای تعیین تعداد ریشه ها میتوان از دلتا استفاده کرد ولی گاهی بدیل نزدیکی بسیار زیاد دلتا به عدد 0 از طرف منفی و مثبت  سیستم این عدد را گرد میکند"
-		#  مثلا ممکن است مقدار واقعی دلتا عددی مثبت یا منفی باشد ولی سیستم آن را 0 در نظر میگیرد
-		# " برای کنترول و رفع این مشکل تا حد زیاد ، از اکسترمم های تابع کمک گرفتیم "
+		#: "Delta can be used to determine the number of roots, but sometimes because of  being very close Delta to the number 0 by the negative and positive side , system rounds this number"
+                # For example, the actual value of the delta may be a positive or negative number, but the system considers it to be 0
+                # "Function extermoms have been used to control and solve this problem to a large extent"
 		if (( self.ex1 > 0 and self.ex2 > 0 ) or ( self.ex1 < 0 and self.ex2 < 0) ) or (self.ex1 == 0 and self.ex2 == 0) :
-			# " بدلیل اینکه بعضی مواقع عدد قرار گرفته در متد "توان" منفی میشود و این متد فقظ اعداد مثبت را میتواند به توان برساند  با تعریف دو متغییر و دو شرط زیر این مشکل را کنترول کردیم  "
-			# استفاده از متد توان در این بلاک شرط و بلاک شرط پایینی بدلیل جذر گربفتن با فرجه 3 است چون متد جذر در کتابخانه ریاضی فقط ریشه دوم عدد را برمیگرداند
+			# "Because sometimes the number in the" power "method becomes negative and this method can only power positive numbers, we controlled this problem by defining two variables and the following two conditions."
+                        # Using the power method in this condition block and the low condition block is due to the square root of the 3, because the square method in the math library returns only the second root of the number.
 			n = m = 1
 			if (-self.q/2 ) + math.sqrt(self.delta) < 0 : n = -n
 			if (-self.q/2 ) - math.sqrt(self.delta) < 0 : m = -m
 			x = ( n * math.pow(  n*( (-self.q/2 ) + math.sqrt(self.delta)) , 1/3 ) ) +  (  m * math.pow( m * (( -self.q/2 ) - math.sqrt(self.delta)) , 1/3 ) ) - (self.bx2/3)
 			print("Root: " , round(x,4))
 		if ( ( self.ex1 == 0 ) and ( self.ex2 < 0 or self.ex2 > 0)) or (( self.ex2 == 0 ) and ( self.ex1 < 0 or self.ex1 > 0)) :
-			# "در این قسمت هم مشکل قسمت قبل وجود دارد و به همان روش کنترول کردیم  "
+			# "There is the problem of the previous in this part and we controlled in the same way"
 			n = 1
 			if self.q < 0 : n = -1
 			x1 = ( -2 * ( n * math.pow( n * self.q/2 , 1/3) ) ) - ( self.bx2 / 3)
@@ -105,13 +105,11 @@ class equation_degrees3:
 			print("Roots: ",round(x,4) , round(x2,4) , round(x3,4))
 #-------------------------------------------------------------------------
 equation = str(input("Enter Equation:\n"))
-# برای ساخت لیست از جمله های معادله زمانی که بین جمله ها فاصله نیست ، از حلقه زیر استفاده کردیم تا بر اساس مثبت یا منفی بودن هر جمله ، قبل از علامت آن جمله فاصله بیوفتد
+#To make a list of equation sentences when there is no space between the sentences, we used the following loop to make the distance before the sign of that sentence based on whether the sentence is positive or negative.
 for i in ["+","-"] : equation = equation.replace(i,f" {i}")
 equation = equation.split(" ")
 if '' in equation : equation.remove('')
-#  برای تشخیض 1 و -1 در
-# x.. , -x..
-# از حلقه و شرط های زیر استفاده کردیم
+# To recognize "1" and "1" in "x.." , "-x.." We used the following loops and conditions
 for i in equation :
 	if "x" in i :
 		if i[:i.index("x")] == "-": equation[equation.index(i)] = i.replace("-","-1")
