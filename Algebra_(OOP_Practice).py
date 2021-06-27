@@ -84,7 +84,7 @@ class equation_degrees3:
                 # For example, the actual value of the delta may be a positive or negative number, but the system considers it to be 0
                 # "Function extermoms have been used to control and solve this problem to a large extent"
 		if (( self.ex1 > 0 and self.ex2 > 0 ) or ( self.ex1 < 0 and self.ex2 < 0) ) or (self.ex1 == 0 and self.ex2 == 0) :
-			# "Because sometimes the number in the" power "method becomes negative and this method can only power positive numbers, we controlled this problem by defining two variables and the following two conditions."
+			# "Because sometimes the number in the" power "method becomes negative and this method can only power positive numbers, we controlled this problem by defining 2 variables and the 2 following conditions."
                         # Using the power method in this condition block and the low condition block is due to the square root of the 3, because the square method in the math library returns only the second root of the number.
 			n = m = 1
 			if (-self.q/2 ) + math.sqrt(self.delta) < 0 : n = -n
@@ -105,7 +105,7 @@ class equation_degrees3:
 			print("Roots: ",round(x,4) , round(x2,4) , round(x3,4))
 #-------------------------------------------------------------------------
 equation = str(input("Enter Equation:\n"))
-#To make a list of equation sentences when there is no space between the sentences, we used the following loop to make the distance before the sign of that sentence based on whether the sentence is positive or negative.
+#To make a list of equation sentences when there is no space between the sentences, we used the following loop to make the distance, before the sign of that sentence , based on being sentens positive or negative
 for i in ["+","-"] : equation = equation.replace(i,f" {i}")
 equation = equation.split(" ")
 if '' in equation : equation.remove('')
