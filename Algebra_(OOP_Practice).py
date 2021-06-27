@@ -69,9 +69,9 @@ class equation_degrees3:
 		self.p = self.cx - ((self.bx2**2)/3)
 		self.q = (( 2 * ( self.bx2 ** 3 ) / 27 ) - (( self.bx2 * self.cx ) / 3)) + self.d
 		self.delta = (( self.q**2 ) / 4 ) + (( self.p**3 ) / 27)
-		# "If 0> Delta has 3 roots equation"
+		# "If 0 > Delta has 3 roots equation"
                 # "If 0 = Delta has 2 roots in the equation"
-                # "If 0 <delta has the root equation 1
+                # "If 0 < delta has the root equation 1
 		if len(ex) != 0:
 			self.ex1 = ax3 * ( ex[0] ** 3 ) + bx2*( ex[0] ** 2 ) + cx * ex[0] + d
 			self.ex2 = ax3 * ( ex[1] ** 3 ) + bx2*( ex[1] ** 2 ) + cx * ex[1] + d
@@ -80,19 +80,19 @@ class equation_degrees3:
 			self.ex1 = self.ex2 = 0
 			self.extermom = "Extermom Does Not Exist !!!!"
 	def roots(self):
-		#: "Delta can be used to determine the number of roots, but sometimes because of  being very close Delta to the number 0 by the negative and positive side , system rounds this number"
+		# Delta can be used to determine the number of roots, but sometimes because of  being very close Delta to the number 0 by the negative and positive side , system rounds this number
                 # For example, the actual value of the delta may be a positive or negative number, but the system considers it to be 0
-                # "Function extermoms have been used to control and solve this problem to a large extent"
+                # Function extermoms have been used to control and solve this problem to a large extent
 		if (( self.ex1 > 0 and self.ex2 > 0 ) or ( self.ex1 < 0 and self.ex2 < 0) ) or (self.ex1 == 0 and self.ex2 == 0) :
-			# "Because sometimes the number in the" power "method becomes negative and this method can only power positive numbers, we controlled this problem by defining 2 variables and the 2 following conditions."
-                        # Using the power method in this condition block and the low condition block is due to the square root of the 3, because the square method in the math library returns only the second root of the number.
+			# Because sometimes the number in the "pow()" method becomes negative and this method can only power positive numbers, we controlled this problem by defining 2 variables and the 2 following conditions.
+                        # Using the "pow()" method in this condition block and the low condition block is due to the square root of the 3, because the square method in the math library returns only the second root of the number.
 			n = m = 1
 			if (-self.q/2 ) + math.sqrt(self.delta) < 0 : n = -n
 			if (-self.q/2 ) - math.sqrt(self.delta) < 0 : m = -m
 			x = ( n * math.pow(  n*( (-self.q/2 ) + math.sqrt(self.delta)) , 1/3 ) ) +  (  m * math.pow( m * (( -self.q/2 ) - math.sqrt(self.delta)) , 1/3 ) ) - (self.bx2/3)
 			print("Root: " , round(x,4))
 		if ( ( self.ex1 == 0 ) and ( self.ex2 < 0 or self.ex2 > 0)) or (( self.ex2 == 0 ) and ( self.ex1 < 0 or self.ex1 > 0)) :
-			# "There is the problem of the previous in this part and we controlled in the same way"
+			# There is the problem of the previous in this part and we controlled in the same way
 			n = 1
 			if self.q < 0 : n = -1
 			x1 = ( -2 * ( n * math.pow( n * self.q/2 , 1/3) ) ) - ( self.bx2 / 3)
