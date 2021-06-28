@@ -8,7 +8,7 @@ vertex = alphabet[:vertex_number]
 total_graph = dict()
 total_graph_edge = list()
 graph_edge = list()
-# ---------------------------  پیدا کردن همه یال های گراف کامل روش اول -----------------------
+# ---------------------------   Find all the edges of the complete graph the first method   -----------------------
 
 # The following loop creates a dictionary that shows each vertex of the complete graph with all the other vertices that are connected to it 
 # In this dictionary there is duplicate edges
@@ -38,7 +38,7 @@ for i in vertex:
 		for j in total_graph[i] :
 			total_graph_edge.append([i , j])
 
-# ---------------------------  پیدا کردن همه یال های گراف کامل روش دوم -----------------------
+# ---------------------------   Find all the edges of the complete graph the second method   -----------------------
 
 # To find all the edges of a complete graph, this loop has obviously less code than the above three loops, but its speed is lower than the above method
 # Also, in the first method to find the edges of the graph, a special order is observed based on their vertices, which does not happen in this method
