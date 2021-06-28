@@ -10,8 +10,8 @@ total_graph_edge = list()
 graph_edge = list()
 # ---------------------------  پیدا کردن همه یال های گراف کامل روش اول -----------------------
 
-# حلقه زیر دیکشنری را ایجاد میکند که هر راس گراف کامل را به همراه همه راس های دیگر که به آن متصل هستند را نشان میدهد
-# در این دیکشنری یال تکراری وجود دارد 
+# The following loop creates a dictionary that shows each vertex of the complete graph with all the other vertices that are connected to it 
+# In this dictionary there is duplicate edges
 
 for i in vertex :
 	c = list()
@@ -21,8 +21,8 @@ for i in vertex :
 	total_graph[i] = c
 # print(total_graph)
 
-# حلقه زیر دیکشنری دیگری را ایجاد میکند که هر راس گراف کامل را به همراه همه راس های دیگر که به آن متصل هستند را نشان میدهد
-# با این تفاوت که در این دیکشنری یال تکراری وجود ندارد 
+# The following loop creates another dictionary that shows each vertex of the complete graph with all the other vertices that are connected to it
+# With the difference that there is no duplicate edges in this dictionary
 
 z = 0
 for i in vertex:
@@ -33,7 +33,7 @@ for i in vertex:
 	z+=1
 # print(total_graph)
 
-# حلقه زیر لیستی را ایجاد میکند که در آن همه یال های گراف کامل را بدون تکرار نشان میدهد
+# The following loop creates a list that shows all the edges of the complete graph without duplication
 
 for i in vertex:
 	if len(total_graph[i]) != 0 :
@@ -43,9 +43,8 @@ for i in vertex:
 
 # ---------------------------  پیدا کردن همه یال های گراف کامل روش دوم -----------------------
 
-#  برای پیدا کردن تمام یال های گراف کامل این حلقه نسبت به سه حلقه بالا مشخصا کد کمتری دارد ولی سرعت آن از روش بالا کمتر است
-# همچنین در روش اول برای پیدا کردن یال های گراف ترتیب خاصی بر اساس راس هایشان رعایت میشود که در این روش اتفاق نمی افتد
-
+# To find all the edges of a complete graph, this loop has obviously less code than the above three loops, but its speed is lower than the above method
+# Also, in the first method to find the edges of the graph, a special order is observed based on their vertices, which does not happen in this method
 
 # while len(total_graph_edge) != vertex_number*(vertex_number-1)/2: 
 # 	r = random.sample(vertex,2)
@@ -56,15 +55,16 @@ for i in vertex:
 # ------------------------------------------------------------------------------------------
 # print(total_graph_edge , len(total_graph_edge))
 
-#  دو متغیر و حلقه زیر برای محاسبه تعداد همه حالت های ممکن برای ایجاد گراف هایی با تعداد یال مشخص و تعداد راس مشخص
-# مثلا تعداد گراف هایی با 5 راس و 3 یال برابر است با 120
-p = [x for x in range(len(total_graph_edge)+1) if x != 0][::-1]
-c = 1
+# Two variables and the following loop to calculate the number of all possible modes to create graphs with a certain number of edges and a certain number of vertices
+# For example, the number of graphs with 5 vertices and 3 edges is equal to 120
+
+p , c = [x for x in range(len(total_graph_edge)+1) if x != 0][::-1] , 1
 for i in p[:Edge_number]: c = c*i
 print(f"All Number Of Graph With {vertex_number} Vertex And {Edge_number} Edge:",c/math.factorial(Edge_number))
-# C در حلقه زیر به کمک متغییر 
-# به نوعی عمل انتخاب صورت گرفته است تا همه راس هایی از هر گراف که یالی به آن ها متصل شده است با رعایت ترتیب قرار گیری در قالب یک لیست به لیست بزرگتر اضافه شوند
-# در واقع جواب نهایی حلقه زیر یک لیست بزرگ است که عضو های آن خود یک لیست هستند و نشان دهنده یک گراف از بین همه گراف های موجود است 
+
+# In the following loop The selection operation (in mathematics) is performed, so that all vertices of each graph with the edges connected to it, in the order of placement, are added to the larger list in the form of a list.
+# In fact, the final answer of the loop below is a large list whose members are a list and represent a graph from all available graphs.
+
 while len(graph_edge) != c/math.factorial(Edge_number) :
 	random_vertex = random.sample(total_graph_edge,Edge_number)
 	if len(graph_edge) == 0:
@@ -79,14 +79,14 @@ while len(graph_edge) != c/math.factorial(Edge_number) :
 		if x == len(graph_edge): graph_edge.append(random_vertex)
 for i in graph_edge:print(i)
 #-------------------------------------------
-# تابعی برای فیلتر کردن راس ها یا مسیر های خاص در گراف کامل
+# Function to filter specific vertices or paths in a complete graph
 def path(first_point , second_point , path_filter) :
 	v = vertex
 	v.remove(first_point)
 	v.remove(second_point)
 	path = [[first_point,second_point]]
-	# به خاطر اینکه راس های قرار گرفته در مسیر بین دو راس مشخص شده میتوانند تعداد و جایگشت های مختلفی داشته باشند و تعداد و جایگشت های مختلف آن ها مسیر های متفاوت و جدیدی ایجاد میکند
-	# حلقه زیر تمام این حالت ها را بررسی میکند
+        # Because the vertices located in the path between the two specified vertices can have different numbers and permutations, and their different number and permutations create different and new paths
+        # The following loop examines all of these modes
 	for i in range(1,len(v)+1):
 		z = len(v)
 		for j in range(1,i): z = z*(len(v)-j) 
@@ -99,14 +99,14 @@ def path(first_point , second_point , path_filter) :
 	
 	del_filter = []
 	if len(path_filter) != 0:
-		# فیلتر بر اساس مسیر
+		# Filter by path
 		if path_filter[-1] == "path":
 			path_filter.remove("path")
 			for i in path_filter:
 				for j in path:
 					if "".join(i) in "".join(j) and j not in del_filter : del_filter.append(j)
 
-		# فیلتر بر اساس راس 
+		# Filter by vertex
 		if path_filter[-1] == "vertex":
 			for i in path_filter[0]:
 				for j in path:
@@ -119,11 +119,8 @@ def path(first_point , second_point , path_filter) :
 		for i in del_filter : path.remove(i)
 		print(f"\n\nNumber Of All Path With Filter: {len(path)} ",f"All Path Between '{first_point}' and '{second_point}' With Filter:")
 		for i in path: print(" > ".join(i))
-
-# path("B","D" ,[["A","C"],"vertex"])
-
-
-# این تابع لیستی را برمیگرداند که در آن بر اساس انتخاب کاربر راس ها یا یال هایی از گراف که قرار است حذف شوند قرار دارند
+#-------------------------------------------
+# This function returns a list containing the vertices or edges of the graph to be deleted based on the user's choice
 def vertex_or_path():
 	select = input("ّFilter Vertex:'v' Path: 'p' Not_Filter(All path): 'e' \n").capitalize()
 	filter_graph = list()
@@ -133,15 +130,8 @@ def vertex_or_path():
 		filter_graph.append(set(input(f"Enter Vertex:\n").upper()))
 		filter_graph.append("vertex")
 	if select == "P":
-			# در این قسمت چون ترتیب قرار گیری هر دو راس برای حذف یال بین آن ها مهم است ابتدا یک لیست خالی را اضافه کردیم سپس ار حلفه زیر استفاده کردیم
-			# چون اگر از
-			#  sort() یا متد set()
-			# استفاده میکردیم ترتیب قرار گیری بهم میریخت 
-			# مثلا ما میخواهیم در گراق مسیری که از
-			# A به c
-			# میگذرد حذف شود ولی مسیری که از 
-			# C به A
-			# میگذرد باقی بماند
+                # In this section, because the order of placement of both vertices is important to remove the edge between them, first we added an empty list, then we used the following loop, because if we used "sort()" or "set()" method, the order of placement would be messd
+                # For example, we want the path from A to C Can be deleted but the path from C to A Passes to stay
 		for i in range(0,int(input("How many Path?\n"))):
 			filter_graph.append([])
 			for j in list(input(f"Enter Path {i+1}:\n").upper()):
@@ -150,4 +140,3 @@ def vertex_or_path():
 	return filter_graph
 
 path(input("First_Point:\n").upper(),input("Second_Point:\n").upper(),vertex_or_path())
-
