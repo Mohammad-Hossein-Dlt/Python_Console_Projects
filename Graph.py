@@ -19,7 +19,6 @@ for i in vertex :
 		if i != j :
 			c.append(j)
 	total_graph[i] = c
-# print(total_graph)
 
 # The following loop creates another dictionary that shows each vertex of the complete graph with all the other vertices that are connected to it
 # With the difference that there is no duplicate edges in this dictionary
@@ -31,7 +30,6 @@ for i in vertex:
 			total_graph[j] = list(set(total_graph[i]) & set(total_graph[j]))
 			total_graph[j].sort()
 	z+=1
-# print(total_graph)
 
 # The following loop creates a list that shows all the edges of the complete graph without duplication
 
@@ -39,7 +37,6 @@ for i in vertex:
 	if len(total_graph[i]) != 0 :
 		for j in total_graph[i] :
 			total_graph_edge.append([i , j])
-# print(total_graph_edge)
 
 # ---------------------------  پیدا کردن همه یال های گراف کامل روش دوم -----------------------
 
@@ -51,9 +48,7 @@ for i in vertex:
 # 	r.sort()
 # 	if r not in total_graph_edge and r[::-1] not in total_graph_edge : total_graph_edge.append(r)
 
-
 # ------------------------------------------------------------------------------------------
-# print(total_graph_edge , len(total_graph_edge))
 
 # Two variables and the following loop to calculate the number of all possible modes to create graphs with a certain number of edges and a certain number of vertices
 # For example, the number of graphs with 5 vertices and 3 edges is equal to 120
