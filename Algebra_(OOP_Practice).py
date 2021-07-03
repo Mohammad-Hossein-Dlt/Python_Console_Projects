@@ -106,6 +106,7 @@ class equation_degrees3:
 #-------------------------------------------------------------------------
 equation = "".join(list(filter(lambda x : x !="", input("Enter Equation:\n").split(" ") )))
 equation = equation.replace("X" , "x")
+equation = equation.replace("^" , "**")
 #To make a list of equation sentences , we used the following loop to make the distance , before the sign of that sentence
 for i in ["+","-"] : equation = equation.replace(i,f" {i}")
 equation = equation.split(" ")
