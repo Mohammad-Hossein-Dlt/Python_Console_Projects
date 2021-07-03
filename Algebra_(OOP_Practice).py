@@ -109,7 +109,7 @@ equation = equation.replace("X" , "x")
 #To make a list of equation sentences , we used the following loop to make the distance , before the sign of that sentence
 for i in ["+","-"] : equation = equation.replace(i,f" {i}")
 equation = equation.split(" ")
-# To recognize "1" and "1" in "x.." , "-x.." We used the following loops and conditions
+# To recognize "1" and "-1" in "x.." , "-x.." We used the following loops and conditions
 for i in equation :
 	if "x" in i :
 		if i[:i.index("x")] == "-": equation[equation.index(i)] = i.replace("-","-1")
