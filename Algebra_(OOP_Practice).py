@@ -80,7 +80,7 @@ class equation_degrees3:
 			self.ex1 = self.ex2 = 0
 			self.extermom = "Extermom Does Not Exist !!!!"
 	def roots(self):
-		# Delta can be used to determine the number of roots, but sometimes because of  being very close Delta to the number 0 by the negative and positive side , system rounds this number
+		# Delta can be used to determine the number of roots, but sometimes because of  being very close Delta to the number 0 by the negative and positive side , system rounds this number to 0
                 # For example, the actual value of the delta may be a positive or negative number, but the system considers it to be 0
                 # Function extermoms have been used to control and solve this problem to a large extent
 		if (( self.ex1 > 0 and self.ex2 > 0 ) or ( self.ex1 < 0 and self.ex2 < 0) ) or (self.ex1 == 0 and self.ex2 == 0) :
