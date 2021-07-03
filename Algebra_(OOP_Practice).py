@@ -104,11 +104,11 @@ class equation_degrees3:
 			x3 =  (2 / math.sqrt(3) ) * math.sqrt(-self.p) * math.cos( ( (math.asin( (3*math.sqrt(3)*self.q) / (2*(math.sqrt(-self.p)**3) ) ) ) / 3 ) + math.pi/6 ) - self.bx2/3
 			print("Roots: ",round(x,4) , round(x2,4) , round(x3,4))
 #-------------------------------------------------------------------------
-equation = str(input("Enter Equation:\n"))
-#To make a list of equation sentences when there is no space between the sentences, we used the following loop to make the distance, before the sign of that sentence , based on being sentens positive or negative
+equation = "".join(list(filter(lambda x : x !="", input("Enter Equation:\n").split(" ") )))
+equation = equation.replace("X" , "x")
+#To make a list of equation sentences , we used the following loop to make the distance , before the sign of that sentence
 for i in ["+","-"] : equation = equation.replace(i,f" {i}")
 equation = equation.split(" ")
-if '' in equation : equation.remove('')
 # To recognize "1" and "1" in "x.." , "-x.." We used the following loops and conditions
 for i in equation :
 	if "x" in i :
