@@ -122,10 +122,8 @@ d = sum(list(map(   lambda x : int(x) , list(filter(lambda x : "x" not in x , eq
 if ax3 == 0:
 	Algebrax2 = equation_degrees2(bx2,cx,d)
 	print(Algebrax2.RootInfo())
-	if bx2>0:
-		print("Max: ", Algebrax2.min_max)
-	else:
-		print("Min: ", Algebrax2.min_max)
+	if bx2>0: print("Max: ", Algebrax2.min_max)
+	else: print("Min: ", Algebrax2.min_max)
 else :
 	Derivative = equation_degrees2(3*ax3,2*bx2,cx)
 	eq3 = equation_degrees3(ax3,bx2,cx,d , Derivative.root)
