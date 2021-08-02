@@ -1,4 +1,4 @@
-import os , math , matplotlib.pyplot as pl,matplotlib.pyplot as pl2 , numpy as np
+import os , math , matplotlib.pyplot as pl , numpy as np
 os.system("cls")
 # Please enter the equations in the following format and make sure that there is no space between the equation sentences : ax^3 + bx^2 + cx + d
 # x^3-4x^2+5x-2
