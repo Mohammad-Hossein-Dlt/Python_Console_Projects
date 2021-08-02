@@ -1,11 +1,14 @@
 import os , math , matplotlib.pyplot as pl,matplotlib.pyplot as pl2 , numpy as np
 os.system("cls")
-# Please enter the equations in the following format and make sure that there is no space between the equation sentences :
+# Please enter the equations in the following format and make sure that there is no space between the equation sentences : ax^3 + bx^2 + cx + d
 # x^3-4x^2+5x-2
 # 6x^3-4x^2-4x+2
 # -6x^3+8x^2-4x+3
 # -6x^3+8x^2-4x-3 
 # x^3-4x+14
+# 2x^3-3x^2+6x+4
+# x^3-4x^2+5x-2
+# 3x^3-3x^2+x+2
 class equation_degrees2:
 	def __init__(self,a__,b__,c__) :
 		self.a = a__
@@ -21,7 +24,6 @@ class equation_degrees2:
 			self.root.append(self.x2)
 			self.root = list(set(self.root))
 			self.root.sort()
-		# equation_degrees2.equation_roots = self.root
 	def RootInfo(self):
 		print("Roots: " ,self.root)
 		if self.delta>0:
@@ -133,8 +135,8 @@ class equation_degrees3:
 			domain = [x for x in np.arange(same_width_list[0], same_width_list[1], 0.001)]
 			domain.append(same_width_list[1])
 			range = list(map(lambda x: ax3 * (x ** 3) + bx2 * (x ** 2) + cx * x + d, domain))
-		pl.plot(domain, range)
-		pl.title("Roots", Color="Blue")
+		pl.plot(domain, range , label = "Main Equation")
+		pl.title("Equation Degrees 3 Diagram" , color = "Blue")
 		pl.grid()
 		if len(self.ex_x) == 2:
 			domain2 = [x for x in np.arange(self.ex_x[0], self.ex_x[-1], 0.001)]
@@ -142,12 +144,15 @@ class equation_degrees3:
 			domain2.append(self.ex_x[-1])
 			# domain2.append(same_width_list[1])
 			range2 = list(map(lambda x: 3 * ax3 * (x ** 2) + 2 * bx2 * x + cx, domain2))
-			pl.plot(domain2, range2)
+			pl.plot(domain2, range2 , label = "Derivative")
 		if len(self.ex_x) == 1:
 			domain2 = [x for x in np.arange(self.roots[0] - abs(self.roots[0]), round(((-2 * bx2) / (6 * ax3)), 4) + 2 * abs(self.roots[0]),0.001)]
 			domain2.append(round(((-2 * bx2) / (6 * ax3)), 4) + 2 * abs(self.roots[0]))
 			range2 = list(map(lambda x: 3 * ax3 * (x ** 2) + 2 * bx2 * x + cx, domain2))
-			pl.plot(domain2, range2)
+			pl.plot(domain2, range2 , label = "Derivative")
+		pl.ylabel("Range" , color = "Blue")
+		pl.xlabel("Domain", color = "Blue")
+		pl.legend()
 		pl.show()
 #-------------------------------------------------------------------------
 equation = "".join(list(filter(lambda x : x !="", input("Enter Equation:\n").split(" ") ))) # We used this lambda function to remove extra distances
@@ -172,7 +177,3 @@ else :
 	print(eq3.roots__())
 	print("Extermom's: " ,eq3.extermom)
 	eq3.diagram()
-
-# 2x^3-3x^2+6x+4
-# x^3-4x^2+5x-2
-# 3x^3-3x^2+x+2
