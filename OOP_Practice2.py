@@ -224,7 +224,7 @@ def Manager_Resume(self):
         print("--------------------------------------------------")
         self.__init__(self.user_name, self.password, self.post)
 #-----------
-def Manager_Exit(self):
+def Manager_Exit():
     os.system("cls")
     Employee.employee_number = 0
     Manager.all_user()
