@@ -1,14 +1,14 @@
 import os , math , matplotlib.pyplot as pl , numpy as np
 os.system("cls")
-# Please enter the equations in the following format and make sure that there is no space between the equation sentences : ax^3 + bx^2 + cx + d
-# x^3-4x^2+5x-2
-# 6x^3-4x^2-4x+2
-# -6x^3+8x^2-4x+3
-# -6x^3+8x^2-4x-3 
-# x^3-4x+14
-# 2x^3-3x^2+6x+4
-# x^3-4x^2+5x-2
-# 3x^3-3x^2+x+2
+""" Please enter the equations in the following format and make sure that there is no space between the equation sentences : ax^3 + bx^2 + cx + d
+ x^3-4x^2+5x-2
+ 6x^3-4x^2-4x+2
+ -6x^3+8x^2-4x+3
+ -6x^3+8x^2-4x-3 
+ x^3-4x+14
+ 2x^3-3x^2+6x+4
+ x^3-4x^2+5x-2
+ 3x^3-3x^2+x+2 """
 class equation_degrees2:
 	def __init__(self,a__,b__,c__) :
 		self.a = a__
@@ -68,9 +68,9 @@ class equation_degrees3:
 		self.delta = (( self.q**2 ) / 4 ) + (( self.p**3 ) / 27)
 		self.roots = []
 		self.ex_x = ex_x
-		# If 0 > Delta , equation has 3 roots 
-        # If 0 = Delta , equation has 2 roots
-        # If 0 < Delta , equation has 1 root
+		""" If 0 > Delta , equation has 3 roots 
+                 If 0 = Delta , equation has 2 roots
+                 If 0 < Delta , equation has 1 root """
 		if len(ex_x) == 2:
 			self.ex_y1 , self.ex_y2 = ax3 * ( ex_x[0] ** 3 ) + bx2*( ex_x[0] ** 2 ) + cx * ex_x[0] + d  ,  ax3 * ( ex_x[1] ** 3 ) + bx2*( ex_x[1] ** 2 ) + cx * ex_x[1] + d
 			self.extermom = [(ex_x[0] , self.ex_y1) , (ex_x[1] , self.ex_y2)]
@@ -82,12 +82,12 @@ class equation_degrees3:
 			self.extermom = "Extermom Does Not Exist !!!!"
 		equation_degrees3.roots__(self)
 	def roots__(self):
-		# Delta can be used to determine the number of roots, but sometimes because of  being very close Delta to the number 0 by the negative and positive side , system rounds this number to 0
-        # For example, the actual value of the delta may be a positive or negative number, but the system considers it to be 0
-        # Function extermoms have been used to control and solve this problem to a large extent
+		""" Delta can be used to determine the number of roots, but sometimes because of  being very close Delta to the number 0 by the negative and positive side , system rounds this number to 0
+                 For example, the actual value of the delta may be a positive or negative number, but the system considers it to be 0
+                 Function extermoms have been used to control and solve this problem """
 		if (len(self.ex_x) != 2) or ( self.ex_y1 > 0 and self.ex_y2 > 0 ) or ( self.ex_y1 < 0 and self.ex_y2 < 0) or (self.ex_y1 == 0 and self.ex_y2 == 0)  :
-			# Because sometimes the number in the "pow()" method becomes negative and this method can only power positive numbers, we controlled this problem by defining 2 variables and the 2 following conditions.
-            # Using the "pow()" method in this condition block and the low condition block is due to the square root of the 3, because the square method in the math library returns only the second root of the number.
+			""" Because sometimes the number in the "pow()" method becomes negative and this method can only power positive numbers, we controlled this problem by defining 2 variables and the 2 following conditions.
+                        Using the "pow()" method in this condition block and the low condition block is due to the square root of the 3, because the square method in the math library returns only the second root of the number. """
 			n = m = 1
 			if (-self.q/2 ) + math.sqrt(self.delta) < 0 : n = -n
 			if (-self.q/2 ) - math.sqrt(self.delta) < 0 : m = -m
